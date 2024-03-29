@@ -51,9 +51,12 @@ const Navbar = () => {
           : ""
           }`}
       >
-        <div className="navbar-start">
+        <div className="navbar-start items-center">
+          <a href="/">
+            <img src={logo} alt="" className="md:w-14 w-8 md:h-12 md:pl-0 pl-2" /><span className="text-slate-400 lg:block hidden">DomTech</span>
+          </a>
           <div className="dropdown justify-between">
-            <label onClick={toggleMenu} tabIndex={0} className="btn btn-ghost lg:hidden" >
+            <label onClick={toggleMenu} tabIndex={0} className="btn btn-ghost lg:hidden text-slate-400" >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -79,9 +82,6 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <a href="/">
-            <img src={logo} alt="" className="w-14 h-12"/><span className="text-slate-400">DomTech</span>
-          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal space-x-6 font-tek text-lg">{
