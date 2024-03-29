@@ -80,7 +80,7 @@ const Navbar = () => {
             </ul>
           </div>
           <a href="/">
-            <img src={logo} alt="" />
+            <img src={logo} alt="" className="w-14 h-12"/><span className="text-slate-400">DomTech</span>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">

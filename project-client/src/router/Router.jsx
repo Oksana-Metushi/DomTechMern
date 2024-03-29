@@ -15,13 +15,13 @@ import AddMenu from "../pages/dashboard/admin/AddMenu";
 import ManageItems from "../pages/dashboard/admin/ManageItems";
 import UpdateMenu from "../pages/dashboard/admin/UpdateMenu";
 import Payment from "../pages/menuPage/Payment";
+import ManageBookings from "../pages/dashboard/admin/ManageBookings";
 import Contact from "../pages/contact/Contact";
 import About from "../pages/about/About";
 import BlogItems from "../pages/blog/BlogItems";
 import ManageBlog from "../pages/dashboard/admin/ManageBlog";
 import AddBlog from "../pages/dashboard/admin/AddBlog";
 import UpdateBlog from "../pages/dashboard/admin/UdateBlog";
-import SingleBlog from "../pages/blog/SingleBlog";
 
 const router = createBrowserRouter([
     {
@@ -63,11 +63,7 @@ const router = createBrowserRouter([
         {
           path: "/process-checkout",
           element: <Payment/>
-        }, 
-        {
-          path: 'single-blog',
-          element: <SingleBlog/>
-        },
+        }
       ]
     },
     {
@@ -116,6 +112,10 @@ const router = createBrowserRouter([
           element: <UpdateBlog/>,
           loader: ({ params }) => fetch(`http://localhost:5000/blog/${params.id}`)
         },
+        {
+          path: 'bookings',
+          element: <ManageBookings/>
+        }
       ]
     }
   ]);
