@@ -17,6 +17,7 @@ router.get('/:id', menuController.singleMenuItem);
 
 router.patch('/:id',verifyToken, verifyAdmin, menuController.updateMenuItem);
 
+router.get('/get', menuController.getListings);
 
 
 module.exports = router;

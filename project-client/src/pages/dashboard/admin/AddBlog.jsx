@@ -84,7 +84,7 @@ const AddBlog = () => {
           </div>
 
           <button className="btn bg-slate-200 text-white px-6">
-            Add Item <FaUtensils></FaUtensils>
+            Add Item 
           </button>
         </form>
       </div>

@@ -29,12 +29,10 @@ const UpdateBlog = () => {
     if (hostingImg.data.success) {
       const blogItem = {
         name: data?.name,
-        category: data.category,
-        price: parseFloat(data.price),
         desc: data.desc,
         image: hostingImg.data.data.display_url,
       };
-      //
+      
       const blogRes = await axiosSecure.patch(`blog/${item._id}`, blogItem);
       console.log(blogRes);
       if (blogRes.status === 200) {
@@ -71,37 +69,6 @@ const UpdateBlog = () => {
               className="input input-bordered w-full"
             />
           </div>
-          <div className="flex gap-6">
-            <div className="form-control w-full my-6">
-              <label className="label">
-                <span className="label-text">Category*</span>
-              </label>
-              <select
-                defaultValue={item.category}
-                {...register("category", { required: true })}
-                className="select select-bordered w-full"
-              >
-                <option disabled value="default">
-                  Select a category
-                </option>
-                <option value="apple">Apple</option>
-                <option value="samsung">Sammsung</option>
-              </select>
-            </div>
-
-            <div className="form-control w-full my-6">
-              <label className="label">
-                <span className="label-text">Price*</span>
-              </label>
-              <input
-                type="number"
-                placeholder="Price"
-                defaultValue={item.price}
-                {...register("price", { required: true })}
-                className="input input-bordered w-full"
-              />
-            </div>
-          </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Description Details</span>
@@ -123,7 +90,7 @@ const UpdateBlog = () => {
           </div>
 
           <button className="btn bg-slate-400 text-white px-6">
-            Update Item <FaUtensils></FaUtensils>
+            Update Item 
           </button>
         </form>
       </div>

@@ -1,31 +1,44 @@
-import React from 'react'
-import img from "../../../public/images/home/blog.jpg"
-import Newsletter from '../../components/Newsletter'
+import React, { useEffect, useState } from 'react';
+import Newsletter from '../../components/Newsletter';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const SingleBlog = () => {
+    const [item, setItem] = useState({});
+    const { id } = useParams();
+    const nav = useNavigate();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`http://localhost:5000/blog/${id}`, {
+                    method: 'GET'
+                });
+                const data = await response.json();
+                setItem(data); 
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchData();
+    }, [id]);
+
     return (
         <div className="relative">
-            <img src={img} class="w-full" />
+            <img src={item.image} className="w-full" />
             <div className="max-w-3xl mx-auto p-5 sm:p-10 md:p-16">
-                <div
-                    className="mt-3 bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
+                <div className="mt-3 bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
                     <div className="bg-white relative top-0 -mt-[40%] p-5 sm:p-10">
-                        <h1 href="#" className="text-gray-900 font-bold text-3xl mb-2">	Scrum vs. SAFe: Which Agile framework is right for your team?</h1>
-
+                        <h1 className="text-gray-900 font-bold text-3xl mb-2">{item.name}</h1>
                         <p className="text-base leading-8 my-5">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the 150s, when an unknown printer took a galley of type
-                            and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
-                            leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
-                            with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            {item.desc}
                         </p>
                     </div>
                 </div>
             </div>
-            <Newsletter/>
+            <Newsletter />
         </div>
-    )
-}
+    );
+};
 
-export default SingleBlog
+export default SingleBlog;

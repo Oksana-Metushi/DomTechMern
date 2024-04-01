@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Cards from "../../components/Cards";
-import { FaFilter } from "react-icons/fa";
 import img from "../../../public/images/home/shop.jpg"
 import Newsletter from "../../components/Newsletter";
 import BlogCard from "../../components/BlogCard";
@@ -53,18 +51,6 @@ const BlogItems = () => {
                     ))}
                 </div>
             </div>
-            {/* <div className="flex justify-center my-8 flex-wrap gap-2">
-                {Array.from({ length: Math.ceil(filteredItems.length / itemsPerPage) }).map((_, index) => (
-                    <button
-                        key={index + 1}
-                        onClick={() => paginate(index + 1)}
-                        className={`mx-1 px-3 py-1 rounded-full ${currentPage === index + 1 ? "bg-slate-400 text-white" : "bg-gray-200"
-                            }`}
-                    >
-                        {index + 1}
-                    </button>
-                ))}
-            </div> */}
             <Newsletter />
         </div>
     );

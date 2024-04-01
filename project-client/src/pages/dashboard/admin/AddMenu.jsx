@@ -99,7 +99,7 @@ const AddMenu = () => {
               <span className="label-text">Description Details</span>
             </label>
             <textarea
-              {...register("desc")}
+              {...register("des")}
               className="textarea textarea-bordered h-24"
               placeholder="Bio"
             ></textarea>
@@ -114,7 +114,7 @@ const AddMenu = () => {
           </div>
 
           <button className="btn bg-slate-200 text-white px-6">
-            Add Item <FaUtensils></FaUtensils>
+            Add Item 
           </button>
         </form>
       </div>

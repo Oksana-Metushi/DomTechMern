@@ -70,7 +70,32 @@ const updateMenuItem = async (req, res) => {
   }
 };
 
+const getListings = async (req, res, next) => {
+  try {
+    const limit = parseInt(req.query.limit) || 9;
+    const startIndex = parseInt(req.query.startIndex) || 0;
+    let offer = req.query.offer;
+    if (offer === undefined || offer === 'false') {
+      offer = { $in: [false, true] };
+    }
+    const searchTerm = req.query.searchTerm || '';
+    const sort = req.query.sort || 'createdAt';
+    const order = req.query.order || 'desc';
+    const listings = await Menu.find({
+      name: { $regex: searchTerm, $options: 'i' },
+      offer,
+    })
+      .sort({ [sort]: order })
+      .limit(limit)
+      .skip(startIndex);
+    return res.status(200).json(listings);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
+  getListings,
   getAllMenuItems,
   postMenuItem,
   deleteMenu,

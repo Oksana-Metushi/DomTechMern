@@ -63,13 +63,11 @@ const Cards = ({ item }) => {
   return (
     <div to={`/menu/${item._id}`} className="card shadow-xl relative mr-5 md:my-5">
 
-      <Link to={`/menu/${item._id}`}>
         <figure>
           <img src={item.image} alt="Phones" className="hover:scale-105 transition-all duration-300 md:h-72" />
         </figure>
-      </Link>
       <div className="card-body">
-        <Link to={`/menu/${item._id}`}><h2 className="card-title">{item.name}!</h2></Link>
+        <h2 className="card-title">{item.name}!</h2>
         <p>{item.details}</p>
         <div className="card-actions justify-between items-center mt-2">
           <h5 className="font-semibold">

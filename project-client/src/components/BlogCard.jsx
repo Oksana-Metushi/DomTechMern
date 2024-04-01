@@ -17,7 +17,7 @@ const BlogCard = ({ item }) => {
                 <p>{item.details}</p>
             </div>
             <div className="card-actions p-4">
-                <Link to="/single-blog"><button className="btn bg-slate-400 text-white">Read More </button></Link>
+                <Link to={`/single-blog/${item._id}`}><button className="btn bg-slate-400 text-white">Read More </button></Link>
             </div>
         </div>
     );

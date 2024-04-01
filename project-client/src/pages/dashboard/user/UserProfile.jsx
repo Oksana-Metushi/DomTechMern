@@ -33,7 +33,6 @@ const UserProfile = () => {
             <span className="label-text">Upload Photo</span>
           </label>
           <input type="file" {...register("photoURL")}  className="file-input w-full mt-1" />
-          {/* <input type="text" {...register("photoURL")} placeholder="photo url" className="input input-bordered" required /> */}
         </div>
         <div className="form-control mt-6">
           <input type='submit' value={"Update"} className="btn bg-slate-400 text-white"/>

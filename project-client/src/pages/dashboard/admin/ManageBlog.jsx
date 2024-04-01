@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import useblog from "../../../hooks/useblog";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 import { FaArrowCircleRight, FaArrowLeft, FaArrowRight, FaEdit, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useBlog from "../../../hooks/useblog";
 
 const ManageBlog = () => {
-  const [blog, , refetch] = useblog();
+  const [blog, , refetch] = useBlog();
   const axiosSecure = useAxiosSecure();
 
   const [currentPage, setCurrentPage] = useState(1);

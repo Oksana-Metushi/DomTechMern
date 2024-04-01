@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Cards from "../../components/Cards";
-import { FaFilter } from "react-icons/fa";
+import { FaFilter, FaSearch } from "react-icons/fa";
 import img from "../../../public/images/home/shop.jpg"
 import Newsletter from "../../components/Newsletter";
+import { useNavigate } from "react-router-dom";
 
 const Menu = () => {
   const [menu, setMenu] = useState([]);
@@ -76,6 +77,25 @@ const Menu = () => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set('searchTerm', searchTerm);
+    const searchQuery = urlParams.toString();
+    navigate(`/menu?${searchQuery}`);
+  };
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const searchTermFromUrl = urlParams.get('searchTerm');
+    if (searchTermFromUrl) {
+      setSearchTerm(searchTermFromUrl);
+    }
+  }, [location.search]);
+
 
   return (
     <div>
@@ -97,14 +117,21 @@ const Menu = () => {
             <div className="form-control border p-4 mb-6">
               <div className="font-tek text-3xl text-slate-400 my-6">Product Search <div className="border-b-4 w-10 text-slate-500"></div></div>
               <div className="join">
-                <div>
-                  <div>
-                    <input className="input input-bordered join-item" placeholder="Search" />
-                  </div>
-                </div>
-                <div className="indicator">
-                  <button className="btn join-item text-slate-400">Search</button>
-                </div>
+                <form
+                  onSubmit={handleSubmit}
+                  className='bg-slate-100 p-3 rounded-lg flex items-center w-full max-w-md mx-auto shadow-md'
+                >
+                  <input
+                    type='text'
+                    placeholder='What are you looking for?'
+                    className='bg-transparent focus:outline-none flex-grow text-slate-700'
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                  <button>
+                    <FaSearch className='text-sky-500' />
+                  </button>
+                </form>
               </div>
             </div>
             <div className="border p-4 ">

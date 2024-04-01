@@ -22,6 +22,7 @@ import BlogItems from "../pages/blog/BlogItems";
 import ManageBlog from "../pages/dashboard/admin/ManageBlog";
 import AddBlog from "../pages/dashboard/admin/AddBlog";
 import UpdateBlog from "../pages/dashboard/admin/UdateBlog";
+import SingleBlog from "../pages/blog/SingleBlog";
 
 const router = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
         {
           path: "/cart-page",
           element: <CartPage/>
+        },
+        {
+          path: 'single-blog/:id',
+          element: <SingleBlog/>
         },
         {
           path: "/process-checkout",

@@ -34,7 +34,7 @@ const UpdateMenu = () => {
         desc: data.desc,
         image: hostingImg.data.data.display_url,
       };
-      //
+      
       const menuRes = await axiosSecure.patch(`menu/${item._id}`, menuItem);
       console.log(menuRes);
       if (menuRes.status === 200) {
@@ -123,7 +123,7 @@ const UpdateMenu = () => {
           </div>
 
           <button className="btn bg-slate-400 text-white px-6">
-            Update Item <FaUtensils></FaUtensils>
+            Update Item 
           </button>
         </form>
       </div>
